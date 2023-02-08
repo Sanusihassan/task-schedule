@@ -3,52 +3,47 @@ import Column from "./layout/Column";
 let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 import React, { useState, useEffect, useReducer } from "react";
 import axios from "axios";
+import { useForm } from 'react-hook-form';
+
 
 export default function InputForm() {
-    const [inputs, setInputs] = useState({ time: "", date: new Date() });
     const [schedules, setSchedules] = useState([])
     const [, forceUpdate] = useReducer(x => x + 1, 0);
     useEffect(() => {
         getSchedules();
         forceUpdate();
     }, [])
-    const handleChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setInputs(values => ({ ...values, [name]: value }));
-    }
-    function handleSubmit(e) {
-        e.preventDefault();
-        // validation
-        // let isEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        // let isValidPhoneNumber = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-        // if (inputs.name && inputs.email.match(isEmail) && inputs.phone.match(isValidPhoneNumber) && inputs.date && inputs.time) {
-        // }
-        axios.post('http://localhost:5000/', inputs).then(res => {
-            getSchedules();
-            // forceUpdate();
-        })
-
-    }
+    // validation
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
+    // let isEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/m;
     function getSchedules() {
         axios.get("http://localhost:5000/").then(response => {
             setSchedules(response.data)
         }).catch(e => console.log(`ERROR: ${e.message}`));
     }
     return (
-        <form method="POST" onSubmit={handleSubmit}>
+        <form method="POST" onSubmit={handleSubmit((data) => {
+            axios.post('http://localhost:5000/', data).then(res => {
+                getSchedules();
+            })
+        })}>
             <Row attr="inputs">
                 <Column>
                     <label htmlFor="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="Jhon Doe" onInput={handleChange} />
+                    <input {...register('name', { required: true })} type="text" name="name" id="name" placeholder="Jhon Doe" />
+                    <p>{errors.firstName?.message}</p>
                 </Column>
                 <Column attr="mail">
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="jhondoe@gmail.com" onInput={handleChange} />
+                    <input type="email" {...register("email", { required: true })} id="email" placeholder="jhondoe@gmail.com" />
                 </Column>
                 <Column>
                     <label htmlFor="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" placeholder="1-541-754-3010" onInput={handleChange} />
+                    <input type="text" {...register("phone", { required: true })} id="phone" placeholder="1-541-754-3010" />
                 </Column>
             </Row>
             <p className="question">What time works?</p>
@@ -58,13 +53,13 @@ export default function InputForm() {
                 ))}
             </Row>
             <Column attr="date-time">
-                <input type="date" name="date" value={inputs.date} onInput={handleChange} />
+                <input type="date" {...register("date", { required: true })} />
                 <Row attr="time-picker">
                     <Column attr="time">
                         <label>Time</label>
                         <div className="date">Mon, Sep 19</div>
                     </Column>
-                    <input type="time" name="time" id="time" value={inputs.time} onInput={handleChange} />
+                    <input type="time" {...register("time", { required: true })} id="time" />
                 </Row>
                 <Row attr="output-box">
                     <div className="registered-date">

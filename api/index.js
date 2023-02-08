@@ -58,11 +58,23 @@ function toSQLDate(d) {
 app.post("/", (req, res) => {
   let schedule = req.body;
   schedule.date = toSQLDate(schedule.date);
-  connection.query("INSERT INTO ScheduleI SET ?", schedule, function (error) {
-    if (error) throw error;
-    // Neat!
-  });
-  res.send(req.body);
+  console.log("getting request...");
+  connection.query(
+    `SELECT * FROM ScheduleI WHERE name = "${schedule.name}";`,
+    (err, results) => {
+      if (!results.length) {
+        connection.query(
+          "INSERT INTO ScheduleI SET ?",
+          schedule,
+          function (error) {
+            if (error) throw error;
+            // Neat!
+          }
+        );
+      }
+      res.send(req.body);
+    }
+  );
 });
 // Edit ScheduleI route
 app.put("/", (req, res) => {

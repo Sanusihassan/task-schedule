@@ -145,6 +145,7 @@ form {
     .btn {
         justify-content: center;
         margin-top: 2.5%;
+        @extend %pointer;
 
         button.submit {
             border: none;

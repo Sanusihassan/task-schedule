@@ -317,7 +317,7 @@ template {
   display: flex;
 }
 
-#root form .btn button.submit, #root form .time-picker .time .date {
+#root form .btn button.submit, #root form .btn, #root form .time-picker .time .date {
   cursor: pointer !important;
 }
 
