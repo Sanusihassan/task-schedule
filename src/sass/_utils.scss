@@ -1,0 +1,63 @@
+.res-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+%flex {
+    display: flex;
+}
+
+%pointer {
+    cursor: pointer;
+}
+
+%input {
+    max-width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: #f1f2f6;
+    border: 1px solid #eeeeee;
+}
+
+%label {
+    text-align: left;
+    font: normal normal bold 16px/20px Muli;
+    font-family: 'Mulish', sans-serif;
+    letter-spacing: 0px;
+    color: #0C1125;
+    opacity: 1;
+    margin: .3rem .23rem;
+}
+
+.row {
+    @extend %flex;
+    flex-direction: row;
+}
+
+.m0 {
+    margin: 0;
+}
+
+%space-between,
+.space-between {
+    justify-content: space-between;
+}
+
+.column {
+    @extend %flex;
+    flex-direction: column;
+}
+
+.hide-onsmall {
+    @include onsmall {
+        display: none;
+    }
+}
+
+.hide-onlarge {
+    @include onlarge {
+        display: none;
+    }
+}

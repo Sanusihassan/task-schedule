@@ -1,0 +1,111 @@
+@function get-breakpoint($name) {
+    @if($name == small) {
+        @return $small;
+    }
+    @else if($name == medium) {
+        @return $medium;
+    }
+    @else if($name == large) {
+        @return $large;
+    }
+    @else if($name == larger) {
+        @return $larger;
+    }
+    @return $name;
+}
+//breakpoint variables
+$small: 600px;
+$medium: 601px;
+$large: 992px;
+$larger: 1200px;
+@mixin on($start: 0, $to: "", $end: 0) {
+    $not-range: $to == "" and $end == 0;
+    $start-at: ($start == medium) or ($start == large) or ($start == larger);
+    @if($start == small and $not-range) {
+        @include max($small) {@content;}
+    }
+    //start at breakpoints
+    @else if($start-at and $not-range) {
+        @include min(get-breakpoint($start)) {@content;}
+    }
+    @else if($start == medium-to-large and $not-range) {
+        @include range($medium, ($large - 1) + 0.99) {@content;}
+    }
+    @else if($start == large-to-larger and $not-range) {
+        @include range($large, ($larger - 1) + 0.99) {@content;}
+    }
+    @else {
+        @if($start == max) {
+            @include max($to) {@content;}
+        }
+        //breakpoint range
+        @else if($to == to) {
+            @include range(get-breakpoint($start), get-breakpoint($end)) {@content;}
+        }
+        @else {
+            @include min($start) {@content;}
+        }
+    }
+}
+@mixin min($breakpoint) {
+    @media only screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+@mixin max($breakpoint) {
+    @media only screen and (max-width: $breakpoint) {
+        @content;
+    }
+}
+@mixin range($start, $end) {
+    @media only screen and (min-width: $start) and (max-width: $end) {
+        @content;
+    }
+}
+
+@mixin each-range($class-name, $class-name-swapped: false) {
+    $ranges: (small: small, medium: medium-to-large, large: large-to-larger);
+    @each $range-name, $range-value in $ranges {
+        @if($class-name-swapped)
+        {
+            .#{$class-name}-on#{$range-name} {
+                @include on($range-value) {
+                    @content;
+                }
+            }
+        }
+        @else
+        {
+            .on#{$range-name}-#{$class-name} {
+                @include on($range-value) {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+// shortcuts
+@mixin onsmall() {
+    @include on(small) {
+        @content;
+    }
+}
+
+@mixin onmedium() {
+    @include on(medium) {
+        @content;
+    }
+}
+
+@mixin onlarge() {
+    @include on(large) {
+        @content;
+    }
+}
+
+@mixin onlarger() {
+    @include on(larger) {
+        @content;
+    }
+}

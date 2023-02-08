@@ -1,0 +1,536 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+.res-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.column, .row {
+  display: flex;
+}
+
+#root form .btn button.submit {
+  cursor: pointer;
+}
+
+#root form .time-picker .time input, #root form .inputs input {
+  max-width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #f1f2f6;
+  border: 1px solid #eeeeee;
+}
+
+#root form .time-picker label, #root form .inputs label {
+  text-align: left;
+  font: normal normal bold 16px/20px Muli;
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0px;
+  color: #0C1125;
+  opacity: 1;
+  margin: 0.3rem 0.23rem;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.m0 {
+  margin: 0;
+}
+
+#root form .time-picker, #root form .week-days, #root form .inputs,
+.space-between {
+  justify-content: space-between;
+}
+
+.column {
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+  .hide-onsmall {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .hide-onlarge {
+    display: none;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-size: 1.25rem;
+  color: #707070;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#root {
+  padding: 0 5%;
+  position: relative;
+}
+@media only screen and (max-width: 600px) {
+  #root {
+    padding: 0 1.5%;
+  }
+}
+#root form .date-time, #root form .week-days, #root form {
+  border-radius: 1.375rem;
+  min-height: 60%;
+  filter: drop-shadow(0px 3px 3.5px #092f57);
+  background-color: #ffffff;
+  padding: 1rem;
+}
+#root p.question {
+  text-align: center;
+  font: normal normal normal 20px/27px Segoe UI;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+#root form {
+  padding: 2rem;
+}
+@media only screen and (max-width: 600px) {
+  #root form {
+    padding: 1.3rem;
+  }
+}
+#root form .inputs {
+  flex-wrap: wrap;
+}
+#root form .inputs .column {
+  flex: 0 1 30%;
+}
+@media only screen and (max-width: 600px) {
+  #root form .inputs .column {
+    width: 48%;
+    flex: 0 1 45%;
+  }
+  #root form .inputs .column.mail {
+    flex: 1;
+    order: 3;
+  }
+}
+#root form .week-days {
+  font-size: 1rem;
+  width: 90%;
+  margin: auto;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  filter: none;
+  background-color: #092f57;
+  color: white;
+}
+#root form .date-time {
+  min-height: 90%;
+}
+#root form .output-box {
+  background: #F1F2F6 0% 0% no-repeat padding-box;
+  border: 1px solid #EEEEEE;
+  border-radius: 2px;
+  opacity: 1;
+  padding: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+}
+@media only screen and (max-width: 600px) {
+  #root form .output-box {
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+  #root form .output-box .registered-date {
+    margin-bottom: 1.5rem;
+  }
+}
+#root form .output-box .info-p {
+  text-align: left;
+  font: normal normal normal 14px/18px Muli;
+  letter-spacing: 0px;
+  color: #0C1125;
+}
+#root form .output-box .question {
+  font-size: 14px;
+  text-align: left;
+}
+#root form .output-box .check-icon .icon {
+  width: 25px;
+  color: white;
+}
+#root form .output-box .check-icon.hide-on-lg {
+  position: absolute;
+  top: 1rem;
+  right: 0.95rem;
+}
+@media only screen and (min-width: 992px) {
+  #root form .output-box .check-icon.hide-on-lg {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #root form .output-box .check-icon.hide-on-sm {
+    display: none;
+  }
+}
+#root form .time-picker {
+  margin-bottom: 1rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+#root form .time-picker > * {
+  flex: 0 1 45%;
+}
+@media only screen and (max-width: 600px) {
+  #root form .time-picker > * {
+    flex: 1 1 20%;
+  }
+}
+#root form .time-picker .time input {
+  padding: 15px;
+}
+#root form .time-picker .react-time-picker {
+  border: none !important;
+}
+#root form .btn {
+  justify-content: center;
+  margin-top: 2.5%;
+}
+#root form .btn button.submit {
+  border: none;
+  background: #3AAE2A 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  flex: 0 1 50%;
+  padding: 15px;
+  color: white;
+}
+#root .wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("/src/assets/Path-2998.png");
+}
+
+/*# sourceMappingURL=index.css.map */
