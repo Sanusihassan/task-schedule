@@ -35,5 +35,12 @@ const connection = mysql.createConnection({
 
 ```bash
 cd api
+```
+
+```bash
+npm install
+```
+
+```bash
 node .
 ```
