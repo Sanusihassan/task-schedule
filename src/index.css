@@ -317,11 +317,11 @@ template {
   display: flex;
 }
 
-#root form .btn button.submit {
-  cursor: pointer;
+#root form .btn button.submit, #root form .time-picker .time .date {
+  cursor: pointer !important;
 }
 
-#root form .time-picker .time input, #root form .inputs input {
+#root form .time-picker .time .date, #root form .inputs input {
   max-width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -502,7 +502,7 @@ body {
     flex: 1 1 20%;
   }
 }
-#root form .time-picker .time input {
+#root form .time-picker .time .date {
   padding: 15px;
 }
 #root form .time-picker .react-time-picker {

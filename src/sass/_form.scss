@@ -129,9 +129,10 @@ form {
         }
 
         .time {
-            input {
+            .date {
                 @extend %input;
-                padding: 15px
+                @extend %pointer;
+                padding: 15px;
             }
         }
 

@@ -55,24 +55,25 @@ export default function InputForm() {
                 <input type="date" name="date" value={inputs.date} onInput={handleChange} />
                 <Row attr="time-picker">
                     <Column attr="time">
-                        <label htmlFor="time">Time</label>
-                        <input type="text" name="time" id="time" placeholder="Mon, Sep 19" />
+                        <label>Time</label>
+                        <div className="date">Mon, Sep 19</div>
                     </Column>
                     <input type="time" name="time" id="time" value={inputs.time} onChange={handleChange} />
                 </Row>
                 <Row attr="output-box">
                     <div className="registered-date">
-                        {schedules.map((s, key) => (
-                            <div kay={key}>
-                                <p className="info-p m0">
-                                    The next date has been set:
-                                </p>
-                                <p className="question m0">
-                                    At {s.time} on {new Date(s.date).toDateString()}
-                                </p>
-                            </div>
-                        ))}
-
+                        <div className="list">
+                            {schedules.map((s, key) => (
+                                <div kay={key}>
+                                    <p className="info-p m0">
+                                        The next date has been set:
+                                    </p>
+                                    <p className="question m0">
+                                        At {s.time} on {new Date(s.date).toDateString()}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                         <div className="check-icon hide-on-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#3AAE2A" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="icon">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

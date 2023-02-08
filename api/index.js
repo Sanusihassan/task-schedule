@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const port = 5000;
 const bodyParser = require("body-parser");
+const fs = require("fs");
+
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -30,16 +32,24 @@ connection.connect();
  * Edit ScheduleI,
  * Delete ScheduleI).
  */
+
+// create schema
+fs.readFile("./schema.sql", "utf8", (err, data) => {
+  if (err) {
+    return;
+  }
+  connection.query(data, function (error, results) {
+    if (error) throw error;
+  });
+});
+
 // get Get ScheduleI Table route
 app.get("/", (req, res) => {
   // res.send("hello world");
-  connection.query(
-    "SELECT * FROM ScheduleI;",
-    function (error, results, fields) {
-      if (error) throw error;
-      res.send(results);
-    }
-  );
+  connection.query("SELECT * FROM ScheduleI;", function (error, results) {
+    if (error) throw error;
+    res.send(results);
+  });
 });
 function toSQLDate(d) {
   return new Date(d).toISOString().slice(0, 19).replace("T", " ");
