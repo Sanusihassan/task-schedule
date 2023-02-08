@@ -6,7 +6,7 @@ const port = 5000;
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "12345",
