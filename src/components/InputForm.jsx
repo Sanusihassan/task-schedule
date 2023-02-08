@@ -1,28 +1,34 @@
 import Row from "./layout/Row";
 import Column from "./layout/Column";
 let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import axios from "axios";
 
 export default function InputForm() {
     const [inputs, setInputs] = useState({ time: "", date: new Date() });
     const [schedules, setSchedules] = useState([])
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
     useEffect(() => {
-        getSchedules()
+        getSchedules();
+        forceUpdate();
     }, [])
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
         setInputs(values => ({ ...values, [name]: value }));
     }
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         // validation
-        let isEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        let isValidPhoneNumber = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-        if (inputs.name && inputs.email.match(isEmail) && inputs.phone.match(isValidPhoneNumber) && inputs.date && inputs.time) {
-            const res = await axios.post('http://localhost:5000/', inputs);
-        }
+        // let isEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        // let isValidPhoneNumber = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+        // if (inputs.name && inputs.email.match(isEmail) && inputs.phone.match(isValidPhoneNumber) && inputs.date && inputs.time) {
+        // }
+        axios.post('http://localhost:5000/', inputs).then(res => {
+            getSchedules();
+            // forceUpdate();
+        })
+
     }
     function getSchedules() {
         axios.get("http://localhost:5000/").then(response => {
@@ -34,15 +40,15 @@ export default function InputForm() {
             <Row attr="inputs">
                 <Column>
                     <label htmlFor="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="Jhon Doe" onChange={handleChange} />
+                    <input type="text" name="name" id="name" placeholder="Jhon Doe" onInput={handleChange} />
                 </Column>
                 <Column attr="mail">
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="jhondoe@gmail.com" onKeyUp={handleChange} />
+                    <input type="text" name="email" id="email" placeholder="jhondoe@gmail.com" onInput={handleChange} />
                 </Column>
                 <Column>
                     <label htmlFor="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" placeholder="1-541-754-3010" onChange={handleChange} />
+                    <input type="text" name="phone" id="phone" placeholder="1-541-754-3010" onInput={handleChange} />
                 </Column>
             </Row>
             <p className="question">What time works?</p>
@@ -58,17 +64,17 @@ export default function InputForm() {
                         <label>Time</label>
                         <div className="date">Mon, Sep 19</div>
                     </Column>
-                    <input type="time" name="time" id="time" value={inputs.time} onChange={handleChange} />
+                    <input type="time" name="time" id="time" value={inputs.time} onInput={handleChange} />
                 </Row>
                 <Row attr="output-box">
                     <div className="registered-date">
                         <div className="list">
                             {schedules.map((s, key) => (
                                 <div kay={key}>
-                                    <p className="info-p m0">
+                                    <p className="info-p m0" kay={key}>
                                         The next date has been set:
                                     </p>
-                                    <p className="question m0">
+                                    <p className="question m0" kay={key}>
                                         At {s.time} on {new Date(s.date).toDateString()}
                                     </p>
                                 </div>

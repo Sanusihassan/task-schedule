@@ -1,18 +1,9 @@
-import logo from "./assets/aascanadaLogo.png";
-import InputForm from "./components/InputForm";
+import Home from "./components/Home";
 function App() {
 
   return (
     <>
-      <header>
-        <div className="logo">
-          <img src={logo} alt="" />
-        </div>
-      </header>
-      <p className="question">What day is best for you</p>
-      <InputForm />
-
-      <div className="wave"></div>
+      <Home />
     </>
   )
 }
